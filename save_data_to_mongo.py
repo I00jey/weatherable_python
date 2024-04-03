@@ -1,10 +1,13 @@
 import requests
 from bs4 import BeautifulSoup as bs
-from Weatherable_python.Crawling.seleniumCrawling import get_clothes_detail_info
+from Crawling.seleniumCrawling import get_clothes_detail_info
 from pymongo import MongoClient
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
 # mongoDB 연결
-mongodb_URL = "mongodb+srv://Yongheon:GO8EwDBUlGrj6ND2@weatherable.hlkyrfr.mongodb.net/"
+mongodb_URL = os.getenv("MONGODB_URL")
 client = MongoClient(mongodb_URL)
 db = client.weatherable
 clothes = db.clothes
@@ -62,7 +65,7 @@ def get_clothes_list(shopping_mall_url):
             continue
 
 
-for i in range(1, 10):
+for i in range(9, 10):
     print(f"{i}번째 페이지")
     product_list_url = f"https://www.musinsa.com/categories/item/002013?d_cat_cd=002013&brand=&list_kind=small&sort=pop_category&sub_sort=&page={i}&display_cnt=90&exclusive_yn=&sale_goods=&timesale_yn=&ex_soldout=&plusDeliveryYn=&kids=&color=&price1=&price2=&shoeSizeOption=&tags=&campaign_id=&includeKeywords=&measure="
     get_clothes_list(product_list_url)
