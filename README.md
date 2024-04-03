@@ -6,7 +6,8 @@
 <img src="https://github.com/dydgjs200/Weatherable_backend/assets/146299597/a8aeda62-c8ed-4dca-863d-8c89c9426c8b" widht="400" height="350" />
 
 <br>
- - 정의 : 주식에 어려움을 겪는 초보자들을 위한 설명서 <br>
+<br>
+ - 개요 : 날씨에 맞는 ai 추천 및 나만의 옷 코디 <br>
  - 개발기간 : 2024.03.02 ~ 2024.04.02 <br>
  - 인원 : 6명 (Frontend 3, backend 3) <br>
 <br>
@@ -30,10 +31,7 @@
 
 - language <br>
 <div>
-  <img src="https://img.shields.io/badge/Javascript-F7DF1E?style=for-the-badge&logo=Javascript&logoColor=white">
-  <img src="https://img.shields.io/badge/node.js-339933?style=for-the-badge&logo=Node.js&logoColor=white">
-  <img src="https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white">
-  
+  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=Python&logoColor=white">
 </div>
 
 - Backend <br>
