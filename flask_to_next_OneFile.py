@@ -25,15 +25,11 @@ def handle_request():
 
         resDict = {}
 
-        print("data > ", data)
-
         for key, value in data.items():
             img_url, style, score = onefile.predict_cloth(key, value)
             resDict[style] = score
 
-        print(resDict)
-
-        # 서버에 보내기
+        # data transfer
         try:
             end_time = time.time()
             print(f"Total execution time: {end_time - start_time}")
@@ -46,27 +42,20 @@ def handle_request():
 @app.route('/recommend/cloth', methods=['POST'])
 def handled_clothesAi():
     if request.method == 'POST':
-        accessToken = request.headers["Authorization"]      # jwt 토큰
+        accessToken = request.headers["Authorization"]
         cloth_list = request.json
 
-        # openai 응답 메시지
+        # openai response message
         response = ai_server(cloth_list)
         params = {"response" : response}
-        print(response)
 
         try:
-            headers = {'Authorization': accessToken}       # jwt 토큰 헤더 설정
+            headers = {'Authorization': accessToken}        # set Spring jwt token
             message = requests.get(spring_server_url, params=params, headers=headers)
             if message.status_code == 200:
                 data = json.loads(message.text)
-                print(data)
-                # print("data > ", data)
-                # for d in data:
-                #     print("d > ", json.dumps(d))
-
                 return jsonify({"message" : data})
             else:
-                print("rrr >" , message.text)
                 return jsonify({"message" : "send fail"})
         except requests.exceptions.RequestException as e:
             return jsonify({'error': 'Failed to send data: ' + str(e)})

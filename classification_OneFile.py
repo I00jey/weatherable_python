@@ -10,7 +10,6 @@ def predict_cloth(classification, img_url):
     # Disable scientific notation for clarity
     np.set_printoptions(suppress=True)
 
-    # 현재 스크립트 파일의 경로
     current_dir = os.path.dirname(__file__)
     model_dir = os.path.join(current_dir, 'KerasModels')
 
@@ -22,12 +21,12 @@ def predict_cloth(classification, img_url):
         "Hat": ["keras_model_hat.h5", "labels_hat.txt"]
     }
 
-    # 부위에 따른 로드하는 분류모델 로드
+    # part classification model's load
     model_file = predict_file_path[classification][0]
     model_path = os.path.join(model_dir, model_file)
     model = load_model(model_path, compile=False)
 
-    # 라벨 로드
+    # label load
     label_file = predict_file_path[classification][1]
     label_path = os.path.join(model_dir, label_file)
     class_names = open(label_path, "rt", encoding="UTF-8").readlines()
@@ -38,7 +37,6 @@ def predict_cloth(classification, img_url):
     response = requests.get(img_url)
     image_data = response.content
 
-    # 이미지 열기
     image = Image.open(BytesIO(image_data)).convert("RGB")
 
     # resizing the image to be at least 224x224 and then cropping from the center
@@ -60,13 +58,10 @@ def predict_cloth(classification, img_url):
     class_name = class_names[index]
     confidence_score = prediction[0][index]
 
-    # Print prediction and confidence score
-    # print("Class:", class_name[2:], "Confidence Score:", confidence_score)
 
-    # image open은 호출될 때 마다 메모리에 적재되므로 del을 통해 해제할 필요가 있음
+    # Unlock stack memory
     del image
 
-    # return {img_url: [class_name[2:], str(confidence_score)]}
     style_list = {
         "Top" : ["캐주얼 상의\n", "고프고어 상의\n", "포멀 상의\n", "스포티 상의\n", "레트로 상의\n"],
         "Bottom": ["캐주얼 하의\n", "고프코어 하의\n", "포멀 하의\n", "스포티 하의\n", "레트로 하의\n"],
@@ -75,6 +70,4 @@ def predict_cloth(classification, img_url):
         "Hat": ["캐주얼 모자\n", "고프코어 모자\n", "포멀 모자\n", "스포티 모자\n", "레트로 모자\n"]
     }
 
-    # score는 float32형이지만, json에서 전달 불가하므로 문자열로 처리
     return img_url, style_list[classification].index(class_name[2:]), str(confidence_score)
-    # return img_url, class_name[2:], str(confidence_score)
