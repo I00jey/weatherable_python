@@ -5,21 +5,14 @@ import time
 from dotenv import load_dotenv
 from flask_cors import CORS
 from openAi_server import ai_server
-
 import json
-
-import re
-
 import classification_OneFile as onefile
 
 app = Flask(__name__)
 CORS(app, supports_credentials=True)
 load_dotenv()
 
-# onefile은 하나의 파일만 검색함
-
 # 전송할 스프링 서버 주소값
-next_server_url = os.getenv("NEXT_SERVER_URL")
 spring_server_url = os.getenv("SPRING_SERVER_URL")
 
 @app.route('/closet/styleai', methods=['POST'])
