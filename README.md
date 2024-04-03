@@ -38,7 +38,7 @@
 
 - Backend <br>
 <div>
- <img src="https://img.shields.io/badge/express-000000?style=for-the-badge&logo=express&logoColor=white">
+ <img src="https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white">
 </div>
 
 - Server <br>
@@ -57,3 +57,41 @@
 
 <br>
 <br>
+
+# 4. Flow & Logic
+<br>
+
+![image](https://github.com/dydgjs200/Weatherable_python/assets/25136172/0d8bdbab-9f0e-46a1-85dd-d3e0e816be1d)
+![image](https://github.com/dydgjs200/Weatherable_python/assets/25136172/a5b26d70-30bc-441a-ae8a-2b558d1f2c17)
+
+<br>
+<br>
+
+# 5. Install
+
+1. git clone
+
+```
+git clone https://github.com/dydgjs200/Weatherable_python.git
+```
+
+2. pip install
+
+```
+	pip3 install Pillow
+	pip3 install flask
+	pip3 install tensorflow==2.15.0
+	pip3 install openai==0.28
+	pip3 install python-dotenv
+```
+
+tensorflow는 티쳐블 머신을 위한 패키지 설정이며 ndarray, astype 사용을 위한 구 버전 이용 <br>
+
+3. start flask_to_next_OneFile.py
+<br>
+<br>
+
+# 6. Info
+
+만약 사용 중 문제발생 시, dydgjs2016@naver.com 으로 문의 바랍니다.
+   
