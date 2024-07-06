@@ -81,7 +81,7 @@
 1. git clone
 
 ```
-git clone https://github.com/dydgjs200/Weatherable_python.git
+git clone https://github.com/I00jey/weatherable_python.git
 ```
 
 2. pip install
@@ -90,8 +90,12 @@ git clone https://github.com/dydgjs200/Weatherable_python.git
 	pip3 install Pillow
 	pip3 install flask
 	pip3 install tensorflow==2.15.0
+	pip install requests
 	pip3 install openai==0.28
+	pip install keras==2.15.0
 	pip3 install python-dotenv
+	pip install numpy
+	pip install flask_cors
 ```
 
 tensorflow는 티쳐블 머신을 위한 패키지 설정이며 ndarray, astype 사용을 위한 구 버전 이용 <br>
