@@ -15,6 +15,11 @@ load_dotenv()
 # 전송할 스프링 서버 주소값
 spring_server_url = os.getenv("SPRING_SERVER_URL")
 
+@app.route('/', methods=['GET'])
+def health_check():
+    return 'Flask server is up and running!', 200
+
+
 @app.route('/closet/styleai', methods=['POST'])
 def handle_request():
     if request.method == 'POST':
